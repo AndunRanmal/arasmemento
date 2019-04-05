@@ -48,8 +48,9 @@ ga('send', 'pageview');
     <div class="container pr-0">    
     
     <!-- Begin Logo -->
-    <a class="navbar-brand" href="{{ site.baseurl }}/">
-    <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
+        <!--class="navbar-brand for below <a> tag"-->
+    <a  href="{{ site.baseurl }}/">
+    <img style="height: auto", width="130" src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
     </a>
     <!-- End Logo -->
   
@@ -76,21 +77,30 @@ ga('send', 'pageview');
                 <a class="nav-link" href="{{ site.baseurl }}/about">About</a>
                 </li>
 
-                <li class="nav-item">
-                <a target="_blank" class="nav-link" href="https://bootstrapstarter.com/bootstrap-templates/template-mediumish-bootstrap-jekyll/"> Docs</a>
-                </li>                
-                
-                <li class="nav-item">
-                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>
-                </li>
-                
-                <li class="nav-item">
-                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>
-                </li>
+                <!--<li class="nav-item">-->
+                <!--<a target="_blank" class="nav-link" href="https://bootstrapstarter.com/bootstrap-templates/template-mediumish-bootstrap-jekyll/"> Docs</a>-->
+                <!--</li>                -->
+                <!---->
+                <!--<li class="nav-item">-->
+                <!--<a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>-->
+                <!--</li>-->
+                <!---->
+                <!--<li class="nav-item">-->
+                <!--<a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>-->
+                <!--</li>-->
 
                 
                 <li class="nav-item">
-                <a target="_blank" class="nav-link" href="https://github.com/wowthemesnet/mediumish-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
+                <a target="_blank" class="nav-link" href="https://github.com/AndunRanmal"><i class="fab fa-github"></i>Github</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" class="nav-link" href="https://www.facebook.com/andun.ranmal"><i class="fab fa-facebook"></i>acebook</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" class="nav-link" href="https://www.instagram.com/ara_kann"><i class="fab fa-instagram"></i>Instagram</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" class="nav-link" href="https://twitter.com/AndunR"><i class="fab fa-twitter"></i>Twitter</a>
                 </li>
                 
                 {% include search-lunr.html %}
@@ -107,19 +117,52 @@ ga('send', 'pageview');
 </nav>
 <!-- End Navigation
 ================================================== -->
+    <!-- Categories Jumbotron
+================================================== -->
+    {% if page.url == "/" %}
+    <div class="jumbotron fortags">
+        <div class="d-md-flex h-100">
+            <!--<div class="col-md-4 transpdark align-self-center text-center h-100">-->
+                <!--<div class="d-md-flex align-items-center justify-content-center h-100">-->
+                    <!--<h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="col-md-8 p-5 align-self-center text-center">
+                {% assign categories_list = site.categories %}
+                {% if categories_list.first[0] == null %}
+                {% for category in categories_list %}
+                <!--<a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a>-->
+                {% endfor %}
+                {% else %}
+                {% for category in categories_list %}
+                <!--<a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a>-->
+                {% endfor %}
+                {% endif %}
+                {% assign categories_list = nil %}
+            </div>
+
+
+
+        </div>
+    </div>
+    {% else %}
+    <div>
+
+    </div>
+    {% endif %}
     
-<div class="site-content">   
+<div class="site-content">
     
 <div class="container">
     
 <!-- Site Title
 ================================================== -->
-<div class="mainheading">
-    <h1 class="sitetitle">{{ site.name }}</h1>
-    <p class="lead">
-         {{ site.description }}
-    </p>
-</div>
+<!--<div class="mainheading">-->
+    <!--<h1 class="sitetitle">{{ site.name }}</h1>-->
+    <!--<p class="lead">-->
+         <!--{{ site.description }}-->
+    <!--</p>-->
+<!--</div>-->
 
     
     
@@ -134,7 +177,7 @@ ga('send', 'pageview');
 ================================================== -->
 <div class="alertbar">
 	<div class="container text-center">
-		<span><img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{site.title}}"> &nbsp; Never miss a <b>story</b> from us, subscribe to our newsletter</span>
+		<span><img width="100" height="auto" src="{{ site.baseurl }}/{{ site.logo }}" alt="{{site.title}}"> &nbsp; Never miss a <b>story</b> from us, subscribe to our newsletter</span>
         <form action="{{site.mailchimp-list}}" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate" target="_blank" novalidate>
             <div class="mc-field-group">
             <input type="email" placeholder="Email" name="EMAIL" class="required email" id="mce-EMAIL" autocomplete="on" required>
@@ -149,31 +192,31 @@ ga('send', 'pageview');
 
 <!-- Categories Jumbotron
 ================================================== -->
-<div class="jumbotron fortags">
-	<div class="d-md-flex h-100">
-		<div class="col-md-4 transpdark align-self-center text-center h-100">
-            <div class="d-md-flex align-items-center justify-content-center h-100">
-                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
-            </div>
-		</div>
-		<div class="col-md-8 p-5 align-self-center text-center">      
-            {% assign categories_list = site.categories %}
-            {% if categories_list.first[0] == null %}
-                {% for category in categories_list %}
-                    <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a>
-                {% endfor %}
-            {% else %}
-                {% for category in categories_list %}                        
-                    <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a>
-                {% endfor %}
-            {% endif %}
-            {% assign categories_list = nil %}
-		</div>
-        
+<!--<div class="jumbotron fortags">-->
+	<!--<div class="d-md-flex h-100">-->
+		<!--<div class="col-md-4 transpdark align-self-center text-center h-100">-->
+            <!--<div class="d-md-flex align-items-center justify-content-center h-100">-->
+                <!--<h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>-->
+            <!--</div>-->
+		<!--</div>-->
+		<!--<div class="col-md-8 p-5 align-self-center text-center">-->
+            <!--{% assign categories_list = site.categories %}-->
+            <!--{% if categories_list.first[0] == null %}-->
+                <!--{% for category in categories_list %}-->
+                    <!--<a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a>-->
+                <!--{% endfor %}-->
+            <!--{% else %}-->
+                <!--{% for category in categories_list %}-->
+                    <!--<a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a>-->
+                <!--{% endfor %}-->
+            <!--{% endif %}-->
+            <!--{% assign categories_list = nil %}-->
+		<!--</div>-->
 
-        
-	</div>
-</div>
+
+
+	<!--</div>-->
+<!--</div>-->
     
 
  
@@ -184,11 +227,11 @@ ga('send', 'pageview');
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left" style="padding: 20px">
                  Copyright © {{ site.time | date: "%Y" }} {{ site.name }} 
             </div>
             <div class="col-md-6 col-sm-6 text-center text-lg-right">    
-                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+                <!--<a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net-->
             </div>
         </div>
     </div>
